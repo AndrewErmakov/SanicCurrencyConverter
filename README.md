@@ -1,2 +1,8 @@
 # SanicCurrencyConverter
-API for receiving and converting currency rates using the current data of the Central Bank of the Russian Federation
+API для получения валютных курсов.
+Реализовано средствами:
+Sanic
+
+#Для запуска:
+Уебите ракету
+Уебите лаунчер
