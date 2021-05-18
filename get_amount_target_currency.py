@@ -2,8 +2,12 @@ from parser_currency_rate import convert_rubles_to_other_currency
 
 
 async def get_amount_target_currency(original_currency, target_currency, amount_original_currency):
-    if target_currency == 'RUB':
+    if target_currency == original_currency == 'RUB':
+        amount_target_currency = amount_original_currency
+    elif target_currency == 'RUB':
         amount_target_currency = amount_original_currency * await convert_rubles_to_other_currency(original_currency)
+    elif original_currency == 'RUB':
+        amount_target_currency = amount_original_currency / await convert_rubles_to_other_currency(target_currency)
     else:
         original_currency_against_ruble = await convert_rubles_to_other_currency(original_currency)
         target_currency_against_ruble = await convert_rubles_to_other_currency(target_currency)
