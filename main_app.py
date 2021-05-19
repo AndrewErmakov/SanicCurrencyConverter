@@ -3,13 +3,17 @@ from sanic import Sanic
 
 from get_amount_target_currency import get_amount_target_currency
 from parser_currency_rate import convert_rubles_to_other_currency
-from validate_json_data import validate_json_data
+from validate_json_data import validate_json_data_post_request, validate_get_request
 
 app = Sanic('CurrencyConverter')
 
 
 @app.get('/api/course/<currency:string>')
 async def get_currency_rate_against_ruble(request, currency: str):
+    # validate currency from list letters code currency
+    if not validate_get_request(currency):
+        return json({'success': False, 'status': 421}, status=421)
+
     rub_course = await convert_rubles_to_other_currency(currency)
     return json({'currency': currency, 'rub_course': rub_course}, status=200)
 
@@ -17,7 +21,7 @@ async def get_currency_rate_against_ruble(request, currency: str):
 @app.post('/api/convert')
 async def convert_from_one_currency_to_another(request):
     # validation json data
-    result_validation_json = await validate_json_data(request.json)
+    result_validation_json = await validate_json_data_post_request(request.json)
     if result_validation_json is False:
         return json({'success': False, 'status': 421}, status=421)
 
