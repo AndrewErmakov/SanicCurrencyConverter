@@ -1,8 +1,9 @@
 from jsonschema import validate
-from parser_currency_rate import get_list_letters_code_currency
 from jsonschema.exceptions import ValidationError
 
-list_letters_code_currency = await get_list_letters_code_currency()
+from parser_currency_rate import get_list_letters_code_currency
+
+list_letters_code_currency = get_list_letters_code_currency()
 schema = {
     "type": "object",
     "properties": {
