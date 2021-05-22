@@ -1,4 +1,6 @@
 # SanicCurrencyConverter
-API для получения валютных курсов.
-Реализовано средствами:
-Sanic
+## What is it?
+API for getting the currency rate. 
+**Stack**: sanic, pandas.
+
+
