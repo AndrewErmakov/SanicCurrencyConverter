@@ -57,7 +57,7 @@ GET /api/course/USD
 
 The result of the request will be json data 
  
-```
+```json
 {
    "currency": USD,
     "rub_course": 71.662
@@ -67,10 +67,87 @@ The HTTP status code will be 200 in this case.
 
   
 2. If the get request is for a currency (invalid) that does not match the code in the format ISO 4217, then result of the request will be:
-  ```
+  ```json
 {
    "success": False,
 }
 ```
   
   The HTTP status code will be 421 in this case.
+
+  
+# Transfer of a certain amount of one currency to another 
+
+To transfer a certain amount of one currency to another, a post-request get-request type:
+<code>
+POST /api/convert
+</code>
+  
+Json data arrives on the server.
+  ```json
+{
+   "from_currency": <string>,
+    "to_currency": <string>,
+    "amount": <float>
+}
+```
+*Value of amount must be above zero*.
+  
+**Examples**
+1. Let the json data come to the server *(valid data)*:
+
+```json
+{
+   "from_currency": "USD",
+    "to_currency": "RUB",
+    "amount": 134.65
+}
+  ```
+  The answer to this request is json data:
+  ```json
+{
+   "currency": "RUB",
+    "amount": 9643.59
+}
+  ```
+The HTTP status code will be 200 in this case.
+
+2. Let the json data come to the server *(invalid data - one of the currencies does not match the code in the format ISO 4217)*:
+
+  ```json
+{
+   "from_currency": "USB",
+    "to_currency": "RUB",
+    "amount": 134.65
+}
+```
+   
+The answer to this request is:
+   
+```json
+{
+   "success": False,
+}
+```
+  
+The HTTP status code will be 421 in this case.
+  
+3. Let the json data come to the server *(invalid data - value of amount less than zero)*:
+
+  ```json
+{
+   "from_currency": "USD",
+    "to_currency": "RUB",
+    "amount": -134.65
+}
+```
+
+The answer to this request is:
+   
+```json
+{
+   "success": False,
+}
+```
+
+The HTTP status code will be 421 in this case.
