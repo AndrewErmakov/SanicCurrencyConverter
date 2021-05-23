@@ -1,6 +1,5 @@
 from jsonschema import validate
 from parser_currency_rate import get_list_letters_code_currency
-from jsonschema.exceptions import ValidationError
 
 
 async def validate_json_data_post_request(json_data):
@@ -26,7 +25,8 @@ async def validate_json_data_post_request(json_data):
 
         validate(json_data, schema_POST_request)
         return True
-    except ValidationError:
+    except Exception as e:
+        print(e)
         return False
 
 
