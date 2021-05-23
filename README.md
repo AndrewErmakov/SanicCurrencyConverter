@@ -92,7 +92,15 @@ Json data arrives on the server.
 }
 ```
 *Value of amount must be above zero*.
-  
+
+The result is data in the json format with two entries with keys
+
+```json
+{
+   "currency": <string>,
+    "amount": <float>
+}
+```
 **Examples**
 1. Let the json data come to the server *(valid data)*:
 
