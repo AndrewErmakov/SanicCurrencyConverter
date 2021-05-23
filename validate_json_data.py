@@ -32,8 +32,6 @@ async def validate_json_data_post_request(json_data):
 
 async def validate_get_request(currency):
     list_letters_code_currency = await get_list_letters_code_currency()
-    if currency in list_letters_code_currency:
-        return True
-    return False
+    return currency in list_letters_code_currency
 
 
