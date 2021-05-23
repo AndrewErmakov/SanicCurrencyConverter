@@ -13,7 +13,7 @@ async def get_currency_rate_against_ruble(request, currency: str):
     # validate currency from list letters code currency
     result_validation = await validate_get_request(currency)
     if not result_validation:
-        return json({'success': False}, status=421)
+        return json({'success': False}, status=400)
 
     # if validation passed
     rub_course = await convert_rubles_to_other_currency(currency)
@@ -25,7 +25,7 @@ async def convert_from_one_currency_to_another(request):
     # validation json data
     result_validation_json = await validate_json_data_post_request(request.json)
     if not result_validation_json:
-        return json({'success': False}, status=421)
+        return json({'success': False}, status=400)
 
     # if validation passed
     from_currency = request.json.get('from_currency')
@@ -34,7 +34,7 @@ async def convert_from_one_currency_to_another(request):
 
     amount_target_currency = await get_amount_target_currency(from_currency, to_currency, amount_original_currency)
 
-    return json({'currency': to_currency, 'amount': amount_target_currency}, status=201)
+    return json({'currency': to_currency, 'amount': amount_target_currency}, status=200)
 
 
 if __name__ == '__main__':

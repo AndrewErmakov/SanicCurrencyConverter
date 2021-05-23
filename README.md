@@ -73,7 +73,7 @@ The HTTP status code will be 200 in this case.
 }
 ```
   
-  The HTTP status code will be 421 in this case.
+  The HTTP status code will be 400 in this case.
 
   
 # Transfer of a certain amount of one currency to another 
@@ -130,7 +130,7 @@ The answer to this request is:
 }
 ```
   
-The HTTP status code will be 421 in this case.
+The HTTP status code will be 400 in this case.
   
 3. Let the json data come to the server *(invalid data - value of amount less than zero)*:
 
@@ -150,4 +150,4 @@ The answer to this request is:
 }
 ```
 
-The HTTP status code will be 421 in this case.
+The HTTP status code will be 400 in this case.
