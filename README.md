@@ -110,7 +110,7 @@ Json data arrives on the server.
     "amount": 9643.59
 }
   ```
-The HTTP status code will be 200 in this case.
+The HTTP status code will be 201 in this case.
 
 2. Let the json data come to the server *(invalid data - one of the currencies does not match the code in the format ISO 4217)*:
 
