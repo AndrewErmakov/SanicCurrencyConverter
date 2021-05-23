@@ -34,7 +34,7 @@ async def convert_from_one_currency_to_another(request):
 
     amount_target_currency = await get_amount_target_currency(from_currency, to_currency, amount_original_currency)
 
-    return json({'currency': to_currency, 'amount': amount_target_currency}, status=200)
+    return json({'currency': to_currency, 'amount': amount_target_currency}, status=201)
 
 
 if __name__ == '__main__':
