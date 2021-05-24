@@ -59,7 +59,7 @@ The result of the request will be json data
  
 ```json
 {
-   "currency": USD,
+   "currency": "USD",
     "rub_course": 71.662
 }
 ```
@@ -69,7 +69,7 @@ The HTTP status code will be 200 in this case.
 2. If the get request is for a currency (invalid) that does not match the code in the format ISO 4217, then result of the request will be:
   ```json
 {
-   "success": False,
+   "success": false,
 }
 ```
   
@@ -134,7 +134,7 @@ The answer to this request is:
    
 ```json
 {
-   "success": False,
+   "success": false,
 }
 ```
   
@@ -154,7 +154,7 @@ The answer to this request is:
    
 ```json
 {
-   "success": False,
+   "success": false,
 }
 ```
 
